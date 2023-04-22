@@ -25,7 +25,13 @@ function writeDing() {
 const words = ['short', 'medium', 'delicious', 'nice', 'lengthy'];
 
 // The sort method sorts "in place", that is, it modifies the array
-words.sort(/* pass in a named callback here */);
+words.sort(compareLength);
+
+console.log(words);
+
+function compareLength(a, b) {
+    return a.length - b.length;
+    }
 
 // Check that logging words now outputs
 // ["nice", "short", "medium", "lengthy", "delicious"]
@@ -36,7 +42,12 @@ words.sort(/* pass in a named callback here */);
 // named longWords that includes only the words with 7 or more
 // characters
 
-const longWords = words.filter(/* write an anonymous inline function here */);
+
+const longWords = words.filter(function(word) {
+    return word.length >= 7;
+  });
+
+  console.log(longwords);
 
 // Check that logging longWords outputs
 // ["lengthy", "delicious"]
@@ -62,7 +73,17 @@ function log(elem, idx) {
 // Index: 2 / Element Value: blue
 // Index: 3 / Element Value: purple
 
+
+function forEach(arr, cb) {
+    for (let i = 0; i < arr.length; i++) {
+      cb(arr[i], i);
+    }
+  }
+  
+  forEach(colors, log);
+
 // Exercise 5
+
 
 function step1(cb) {
     setTimeout(function() {
